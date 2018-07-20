@@ -14,7 +14,7 @@ router.get("/all", async(req,res)=> {
 
 router.get("/all/:id", async(req,res)=> {
     const result = await UserModel.findById(req.params.id).
-    populate("Articles", "Title").exec();
+    populate("Articles", "Title").sort({Date: 'descending'}).exec();
     res.send(result);
     
     
