@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const User = require("../models/user");
 const Article = require("../models/article");
@@ -19,6 +19,10 @@ router.get("/all/:id", async(req,res)=> {
     
     
 })
+
+// router.get("/profile", async(req,res)=> {
+//     UserModel(req.body).save(err => {res.send(err)}); 
+// })
 
 
 module.exports = router;

@@ -6,7 +6,11 @@ mongoose.connect("mongodb://localhost:27017/blogDb", {useNewUrlParser: true})
 const ArticleModel = mongoose.model("articles",Article)
 
 router.get("/all", async(req,res)=> {
-    const result = await ArticleModel.find().exec();
+    const result = await ArticleModel.find().sort({Date: 'descending'}).exec();
+    result.forEach(function(myArticle) { 
+        const date =  new Date(myArticle.Date);
+        myArticle.Date = date.getDate() + '' + date.getMonth() + '' + date.getFullYear();
+    });
     res.send(result);
 })
 
